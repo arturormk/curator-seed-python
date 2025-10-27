@@ -1,0 +1,60 @@
+name: curator-ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install tooling
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff mypy pytest jsonschema
+
+      - name: Lint (Ruff)
+        run: ruff check . && ruff format --check .
+
+      - name: Type-check (MyPy)
+        run: mypy . || true  # advisory by default
+
+      - name: Fast tests (if any)
+        run: |
+          if [ -f tests/__init__.py ] || compgen -G "tests/test_*.py" > /dev/null; then
+            pytest -q
+          else
+            echo "No tests yet"
+          fi
+
+      - name: Validate AI_CURATOR_RECIPE front-matter against schema (if present)
+        if: hashFiles('AI_CURATOR_RECIPE.md') != ''
+        run: |
+          python - <<'PY'
+          import sys, yaml, json, jsonschema, pathlib
+          from yaml import SafeLoader
+          schema = json.loads(pathlib.Path('docs/curation/ai_curator_recipe.schema.json').read_text())
+          # Extract YAML front-matter
+          p = pathlib.Path('AI_CURATOR_RECIPE.md').read_text()
+          if not p.startswith('---'):
+            print('No YAML front-matter found in AI_CURATOR_RECIPE.md', file=sys.stderr)
+            sys.exit(1)
+          fm = p.split('---', 2)[1]
+          data = yaml.load(fm, Loader=SafeLoader)
+          jsonschema.validate(data, schema)
+          print('Front-matter validated OK.')
+          PY
+
+      - name: Guard: ADR index & lint (if ADRs exist)
+        run: |
+          if [ -d docs/adr ]; then
+            python scripts/lint_adrs.py
+            python scripts/check_adr_index.py
+          else
+            echo "No ADRs yet"
+          fi

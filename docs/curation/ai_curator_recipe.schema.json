@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://controlequis.com/schema/ai_curator_recipe_v0.3.json",
+  "title": "AI Curator Recipe Schema v0.3",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": 0.3
+    },
+    "project": {
+      "type": "string"
+    },
+    "baseline_commit": {
+      "type": "string"
+    },
+    "curated_by": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "project",
+    "baseline_commit",
+    "curated_by"
+  ],
+  "additionalProperties": false,
+  "unevaluatedProperties": false,
+  "$comment": "Front-matter validation only; headings validated by markdown-linter rule.",
+  "definitions": {
+    "required_headings": {
+      "description": "List of section headings that must appear in order.",
+      "enum": [
+        "Intent & Scope",
+        "Product Contract",
+        "Curation Principles",
+        "Repository Map",
+        "ADR Policy",
+        "Testing Strategy",
+        "Automation \u2014 Self-Verifying",
+        "Definition of Done",
+        "AI Assistant Operating Procedure",
+        "Releases & Versioning",
+        "Maintenance Rhythm",
+        "Deferred with Rationale",
+        "Appendix A \u2014 Project-Specific Contracts"
+      ]
+    }
+  }
+}

@@ -1,0 +1,38 @@
+# Global pre-commit, curated for Software Curatorship projects
+exclude: ^docs/curation/
+
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.8
+    hooks:
+      - id: ruff
+        args: ["--fix"]
+      - id: ruff-format
+
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: mypy --config-file pyproject.toml .
+        language: system
+        pass_filenames: false
+      - id: adr-index
+        name: ADR index check
+        entry: python scripts/check_adr_index.py
+        language: system
+        pass_filenames: false
+      - id: adr-lint
+        name: ADR lint
+        entry: python scripts/lint_adrs.py
+        language: system
+        pass_filenames: false
+      - id: print-guard
+        name: print guard (no bare print without file=)
+        entry: python scripts/check_prints.py
+        language: system
+        pass_filenames: false
+      - id: fast-tests
+        name: fast tests subset
+        entry: bash scripts/fast_tests.sh
+        language: system
+        pass_filenames: false
