@@ -7,6 +7,13 @@
 >
 > **Important:** Once a feature has been implemented and/or covered by an ADR,
 > the ADR and the actual code override whatever is written here.
+>
+> **This blueprint is deliberately aspirational.** It records the outcome of
+> brainstorming and design discussions. **It is not a normative
+> specification.** For this project, the authoritative specification of
+> implemented behavior lives in `AI_CURATOR_RECIPE.md` (especially Appendix A)
+> and ADRs. New ideas land here first; only once implemented are they
+> ported to Appendix A.
 
 ---
 
