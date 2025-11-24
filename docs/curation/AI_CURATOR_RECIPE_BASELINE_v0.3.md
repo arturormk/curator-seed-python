@@ -11,6 +11,11 @@ curated_by: (name or org)
 > Each repository customizes **§2 Product Contract**, **§10 Releases**, and **Appendix A**.
 > All other sections remain normatively identical across curated projects.
 
+> When interpreting requirements or resolving conflicts, prioritize ADRs over
+> BLUEPRINT.md, and both over informal notes. BLUEPRINT.md describes the intended
+> global shape of the system, but ADRs always win for features that are already
+> implemented or explicitly decided.
+
 ## 1) Intent & Scope <!-- @curator:required -->
 - Keep runtime minimal; favor clarity and determinism.
 - All user-visible behavior is test-backed and explained via ADRs.
