@@ -111,6 +111,8 @@ Where an **ADR exists for a given choice**, link it here and treat the blueprint
   - Status: `planned | in progress | implemented`
   - ADR(s): `ADR-xxx` (if any)
   - Summary:
+  - Motivation:
+  - Dependencies:
 
 ### 6.2 Future Features / Ideas
 
@@ -151,6 +153,14 @@ Optionally include trade-offs (e.g. “We prefer simplicity over micro-optimizat
 
 ---
 
+## 8.5 Milestones (Non-authoritative)
+
+> Semi-structured list of planned implementation checkpoints.
+> These are aspirational and tentative. They do NOT override ADRs
+> or Appendix A. They exist purely to help AI plan iterative development.
+
+---
+
 ## 9. Open Questions
 
 > This is where the curator intentionally parks uncertainty for the AI to help with.
@@ -171,3 +181,8 @@ Optionally include trade-offs (e.g. “We prefer simplicity over micro-optimizat
   - Always check for relevant ADRs.
   - Do not silently “correct” or override ADRs from here.
 
+> For this project specifically: BLUEPRINT.md records ideas and intended shape.
+> Only implemented behavior, captured in `AI_CURATOR_RECIPE.md` (especially
+> Appendix A) and ADRs, is considered normative. Keeping those specs in sync
+> with reality is paramount; BLUEPRINT.md is allowed to drift until updated by
+> curators.
