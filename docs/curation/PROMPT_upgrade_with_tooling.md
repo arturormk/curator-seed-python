@@ -7,7 +7,7 @@ After updating `AI_CURATOR_RECIPE.md`, review this repository’s CI and pre-com
 If missing, add a CI step that validates the recipe’s YAML front-matter and required headings:
 
 ```bash
-python -m jsonschema -F frontmatter docs/curation/ai_curator_recipe.schema.json docs/AI_CURATOR_RECIPE.md
+python3 ./scripts/validate_recipe.py docs/curation/ai_curator_recipe.schema.json AI_CURATOR_RECIPE.md
 ```
 
 Place this step after lint/type/test stages.

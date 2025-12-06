@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 import pathlib
-import re
 import sys
-
-PATTERN = re.compile(rr"(?<!file=)print\(")
 
 def scan_dir(root: pathlib.Path) -> int:
     errors = 0
@@ -25,4 +22,4 @@ for root in [pathlib.Path("src"), pathlib.Path("scripts"), pathlib.Path("tests")
 
 if errors:
     sys.exit(1)
-print("Print guard passed.")
+print("Print guard passed.", file=sys.stderr)

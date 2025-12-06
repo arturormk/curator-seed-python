@@ -107,15 +107,15 @@ def main(argv: list[str] | None = None) -> int:
         heading_errors = _check_heading_order(body, required_headings)
 
     if not schema_errors and not heading_errors:
-        print(f"{recipe_path} is valid according to {schema_path} and heading rules")
+        print(f"{recipe_path} is valid according to {schema_path} and heading rules", file=sys.stderr)
         return 0
 
-    print(f"{recipe_path} is INVALID:")
+    print(f"{recipe_path} is INVALID:", file=sys.stderr)
     for err in schema_errors:
         loc = ".".join(map(str, err.path)) or "<root>"
-        print(f" - schema:{loc}: {err.message}")
+        print(f" - schema:{loc}: {err.message}", file=sys.stderr)
     for msg in heading_errors:
-        print(f" - heading: {msg}")
+        print(f" - heading: {msg}", file=sys.stderr)
     return 1
 
 

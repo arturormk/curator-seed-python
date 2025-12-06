@@ -19,4 +19,4 @@ for p in sorted(ADR_DIR.glob("[0-9][0-9][0-9][0-9]-*.md")):
 
 if errors:
     sys.exit(1)
-print("ADR lint passed.")
+print("ADR lint passed.", file=sys.stderr)

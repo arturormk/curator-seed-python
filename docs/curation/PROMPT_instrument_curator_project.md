@@ -43,16 +43,12 @@ Copy `docs/curation/CURATION_LOG_template.md` to `docs/curation/CURATION_LOG.md`
 
 ## 4. Validate the Recipe
 
-Create and activate a local Python virtual environment (per‑project, not global):
+Ask the user to create a Python 3 Virtual Environment and install
+the first dependencies:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-```
-
-Install the minimal tools needed for recipe validation:
-
-```bash
 pip install jsonschema pyyaml
 ```
 

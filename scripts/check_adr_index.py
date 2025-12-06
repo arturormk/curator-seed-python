@@ -27,4 +27,4 @@ if current != content:
     INDEX.write_text(content)
     print("ADR index updated. Please stage docs/adr/README.md.", file=sys.stderr)
     sys.exit(1)
-print("ADR index up-to-date.")
+print("ADR index up-to-date.", file=sys.stderr)
