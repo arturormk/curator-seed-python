@@ -42,11 +42,35 @@ Copy `docs/curation/CURATION_LOG_template.md` to `docs/curation/CURATION_LOG.md`
 - `status = in-progress`
 
 ## 4. Validate the Recipe
-Add or verify a CI step that validates the new recipe:
+
+Create and activate a local Python virtual environment (per‑project, not global):
 
 ```bash
-python -m jsonschema -F frontmatter docs/curation/ai_curator_recipe.schema.json AI_CURATOR_RECIPE.md
+python3 -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 ```
+
+Install the minimal tools needed for recipe validation:
+
+```bash
+pip install jsonschema pyyaml
+```
+
+Then run the validator script from the repo root:
+
+```bash
+python3 ./scripts/validate_recipe.py \
+  docs/curation/ai_curator_recipe.schema.json \
+  AI_CURATOR_RECIPE.md
+```
+
+This checks:
+
+- YAML front‑matter against ai_curator_recipe.schema.json
+- The presence and order of required ## section headings
+
+Add or verify a CI step that runs the same validate_recipe.py command to validate the recipe.
+
 
 If the validation fails, fix headings or front-matter until it passes.
 

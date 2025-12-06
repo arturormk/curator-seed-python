@@ -25,7 +25,7 @@
   ],
   "additionalProperties": false,
   "unevaluatedProperties": false,
-  "$comment": "Front-matter validation only; headings validated by markdown-linter rule.",
+  "$comment": "Front-matter validated via JSON Schema; '## ' headings validated by scripts/validate_recipe.py against definitions.required_headings.",
   "definitions": {
     "required_headings": {
       "description": "List of section headings that must appear in order.",
