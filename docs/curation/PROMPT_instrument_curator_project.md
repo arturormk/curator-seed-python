@@ -67,13 +67,13 @@ This checks:
 
 Add or verify a CI step that runs the same validate_recipe.py command to validate the recipe.
 
-
 If the validation fails, fix headings or front-matter until it passes.
 
 ## 5. Add Tooling Hooks
 - Add Ruff, MyPy, ADR lint, and fast-test hooks as defined in `PROMPT_upgrade_with_tooling.md`.
 - Exclude `docs/curation/` from all lint and type checks.
 - Ensure `.github/workflows/ci.yml` runs the recipe validation.
+
 
 ## 6. Initialize ADR and Incident Structure
 Create the following minimal directories and files:

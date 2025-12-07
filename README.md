@@ -34,6 +34,21 @@ It provides the *operational grammar* (baseline recipe, schema, prompts, and gua
 - Changes that affect users must be backed by **tests** and **ADRs**.
 - **Determinism** and **provenance** are first-class citizens.
 
+## AI / Editor Usage
+
+This repository is instrumented for Software Curatorship. When using AI assistants
+(e.g., GitHub Copilot Chat) or IDE integrations:
+
+- All git operations and project checks should be run via explicit terminal
+  commands (e.g. `pre-commit run --all-files`, `bash scripts/fast_tests.sh`,
+  `python scripts/validate_recipe.py …`).
+- The AI assistant should **propose** concrete shell commands and code edits, and
+  the human curator runs and reviews them.
+- The assistant should **not** rely on hidden IDE or cloud-level automation
+  (such as background tooling that performs git operations or runs scripts
+  without showing the exact commands), so that every step remains visible and
+  auditable to the curator.
+
 ---
 
 **License:** MIT.  

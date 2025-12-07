@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import pathlib
-import re
 import sys
 
 ADR_DIR = pathlib.Path("docs/adr")

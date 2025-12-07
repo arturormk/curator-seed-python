@@ -16,6 +16,13 @@ repos:
         entry: mypy --config-file pyproject.toml .
         language: system
         pass_filenames: false
+        additional_dependencies:
+          - types-PyYAML
+      - id: validate-recipe
+        name: validate-ai-curator-recipe
+        entry: python scripts/validate_recipe.py docs/curation/ai_curator_recipe.schema.json AI_CURATOR_RECIPE.md
+        language: system
+        pass_filenames: false
       - id: adr-index
         name: ADR index check
         entry: python scripts/check_adr_index.py

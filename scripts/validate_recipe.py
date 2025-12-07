@@ -97,17 +97,15 @@ def main(argv: list[str] | None = None) -> int:
     schema_errors = sorted(validator.iter_errors(frontmatter), key=lambda e: e.path)
 
     # Heading order from schema definitions.required_headings.enum
-    required_headings = (
-        schema.get("definitions", {})
-        .get("required_headings", {})
-        .get("enum", [])
-    )
+    required_headings = schema.get("definitions", {}).get("required_headings", {}).get("enum", [])
     heading_errors: list[str] = []
     if required_headings:
         heading_errors = _check_heading_order(body, required_headings)
 
     if not schema_errors and not heading_errors:
-        print(f"{recipe_path} is valid according to {schema_path} and heading rules", file=sys.stderr)
+        print(
+            f"{recipe_path} is valid according to {schema_path} and heading rules", file=sys.stderr
+        )
         return 0
 
     print(f"{recipe_path} is INVALID:", file=sys.stderr)

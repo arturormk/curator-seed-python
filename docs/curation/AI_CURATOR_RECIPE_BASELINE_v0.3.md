@@ -73,9 +73,14 @@ Optional additions: locale pinning, determinism diff, version parity check.
 1. Read tree & targets.
 2. Expand curator’s ask → checklist.
 3. Propose minimal diffs.
-4. Run checks; iterate to green or mark deferrals.
-5. Summarize deltas (Done/Deferred).
-6. Keep attribution; never remove license/provenance.
+4. Propose explicit shell commands using this repo’s scripts and tooling
+	(e.g. `pre-commit run --all-files`, `bash scripts/fast_tests.sh`,
+	`python scripts/validate_recipe.py …`) and let the human curator run
+	them in the terminal; avoid hidden IDE/cloud automation that obscures
+	the exact operations performed.
+5. Run checks; iterate to green or mark deferrals.
+6. Summarize deltas (Done/Deferred).
+7. Keep attribution; never remove license/provenance.
 
 ## 10) Releases & Versioning <!-- @curator:required -->
 - Semantic Versioning.
